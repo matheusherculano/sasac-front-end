@@ -3,7 +3,8 @@
 
     angular.module('BlurAdmin.pages.avaliacao', [
         'BlurAdmin.pages.avaliacao.manter',
-        'BlurAdmin.pages.avaliacao.abertas'
+        'BlurAdmin.pages.avaliacao.abertas',
+        'BlurAdmin.pages.avaliacao.criar'
     ])
             .config(routeConfig);
 

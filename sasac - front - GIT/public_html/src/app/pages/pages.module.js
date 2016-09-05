@@ -3,25 +3,26 @@
  * created on 16.12.2015
  */
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('BlurAdmin.pages', [
-    'ui.router',
-
+    angular.module('BlurAdmin.pages', [
+        'ui.router',
 //    'BlurAdmin.pages.dashboard',
-    'BlurAdmin.pages.teste',
+        'BlurAdmin.pages.teste',
+        'BlurAdmin.pages.avaliacao',
+        'BlurAdmin.pages.gerenciamento',
 //    'BlurAdmin.pages.ui',
 //    'BlurAdmin.pages.form',
 //    'BlurAdmin.pages.tables',
-    'BlurAdmin.pages.charts',
+        'BlurAdmin.pages.charts',
 //    'BlurAdmin.pages.maps',
 //    'BlurAdmin.pages.profile',
-  ])
-      .config(routeConfig);
+    ])
+            .config(routeConfig);
 
-  /** @ngInject */
-  function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
-    $urlRouterProvider.otherwise('/dashboard');
+    /** @ngInject */
+    function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
+        $urlRouterProvider.otherwise('/dashboard');
 
 //    baSidebarServiceProvider.addStaticItem({
 //      title: 'Pages',
@@ -57,6 +58,6 @@
 //        }]
 //      }]
 //    });
-  }
+    }
 
 })();

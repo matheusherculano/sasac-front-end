@@ -10,12 +10,18 @@
             $state,
             toastr,
             $uibModal,
-            $scope) {
+            $scope,
+            utilService,
+            repeticaoService) {
         this.avaliacaoService = avaliacaoService;
         this.$state = $state;
         this.toastr = toastr;
         this.$uibModal = $uibModal;
         this.$scope = $scope;
+        this.utilService = utilService;
+        this.repeticaoService = repeticaoService;
+
+
         var $this = this;
 
         $this.aaa = 'aaa';
@@ -24,14 +30,15 @@
     }
 
     /** @ngInject */
-    function ModalInstanceCtrl($uibModalInstance, avaliacao) {
+    function ModalInstanceCtrl($uibModalInstance, avaliacao, utilService, repeticoes) {
         var $ctrl = this;
+
+        avaliacao.data.dt_disponibilidade = utilService.getDate(avaliacao.data.dt_disponibilidade);
         
-        
-        
-        console.log("teste", JSON.stringify(avaliacao.data));
-        
-//        $ctrl.obj = avaliacao.data;
+        $ctrl.obj = avaliacao.data;
+        $ctrl.obj.repeticao.id = avaliacao.data.repeticao.id;
+
+        console.log("$ctrl.obj", $ctrl.obj)
 
         $ctrl.ok = function () {
             $uibModalInstance.close($ctrl.selected.item);
@@ -69,6 +76,12 @@
     gerenciamentoController.prototype.open = function (page, size, idAvaliacao) {
         var $this = this;
 
+        $this.repeticaoService.getRepeticao().then(function (response) {
+            $this.repeticoes = response.data;
+        }, function () {
+            console.error("Falha ao recuperar as repetições");
+        });
+
         $this.$uibModal.open({
             animation: true,
             templateUrl: page,
@@ -76,7 +89,8 @@
             controller: 'ModalInstanceCtrl',
             controllerAs: '$ctrl',
             resolve: {
-                avaliacao: $this.avaliacaoService.getById(idAvaliacao)
+                avaliacao: $this.avaliacaoService.getById(idAvaliacao),
+                repeticoes: $this.repeticaoService.getRepeticao()
             }
         });
     };

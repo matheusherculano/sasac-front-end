@@ -6,50 +6,50 @@
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="titulo">Titulo</label>
-                    <input type="text" class="form-control" id="titulo" placeholder="Titulo">
+                    <input ng-model="vm.obj.titulo" type="text" class="form-control" id="titulo" placeholder="Titulo">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="descrição">Descrição</label>
-                    <textarea class="form-control" id="descrição" placeholder="descrição" rows="3"></textarea>
+                    <textarea ng-model="vm.obj.descricao" class="form-control" id="descrição" placeholder="descrição" rows="3"></textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="rPositiva">Resposta Positiva</label>
-                    <input type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva">
+                    <input ng-model="vm.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="rPositiva">Resposta Neutra</label>
-                    <input type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra">
+                    <input ng-model="vm.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="rPositiva">Resposta Negativa</label>
-                    <input type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa">
+                    <input ng-model="vm.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa">
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="periodo">Periodo de Repetição</label>
-                    <select class="form-control" id="periodo" name="periodo" placeholder="Periodo de Repetição">
-                        <option>asd</option>
-                        <option>asd</option>
-                        <option>asd</option>
-                        <option>asd</option>
-                        <option>asd</option>
+                    <select ng-model="vm.obj.repeticao.id" class="form-control" id="periodo" name="periodo" placeholder="Periodo de Repetição">
+                        <option ng-repeat="x in vm.repeticoes" value="{{x.id}}">{{x.repeticao}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="repeticoes">Quantidade de repetições</label>
                     <input type="number" class="form-control" id="repeticoes" name="repeticoes" placeholder="Quantidade de repetições">
                 </div>
+                <div class="form-group col-md-4">
+                    <label for="dt_disponibilidade">Data limite de disponibilidade</label>
+                    <input ng-model="vm.obj.dt_disponibilidade" type="date" class="form-control" id="dt_disponibilidade" name="dt_disponibilidade" placeholder="Data limite de disponibilidade">
+                </div>
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button ng-click="vm.salvar(vm.obj)" class="btn btn-success">Enviar</button>
         </form>
 
     </div>

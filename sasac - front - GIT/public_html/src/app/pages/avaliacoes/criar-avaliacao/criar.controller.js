@@ -5,8 +5,37 @@
       .controller('criarController', criarController);
 
   /** @ngInject */
-  function criarController() {
-    console.log("Deu certo mlk!");
+  function criarController(repeticaoService, avaliacaoService, toastr, $state) {
+      this.repeticaoService = repeticaoService;
+      this.avaliacaoService=avaliacaoService;
+      this.toastr = toastr;
+      this.$state = $state;
+      
+      var $this = this;
+      
+      $this.repeticaoService.getRepeticao().then(function(response){
+          console.log("repeteco ", response);
+          $this.repeticoes = response.data;
+      },function (){
+          console.error("Falha ao recuperar as repetições")
+      });
+      
   }
+  
+    criarController.prototype.salvar = function (obj){
+        var $this = this;
+        obj['usuarioCriador'] = {id : 1};
+        console.log(obj);
+        var sucesso = function (){ 
+            $this.toastr.success("Avaliação criada com sucesso. Aguarde a aprovação");
+            $this.$state.go('avaliacao.abertas');
+        };
+        
+        var falha = function (){ 
+            $this.toastr.error("Falha ao criar a Avaliação");
+        };
+        
+        $this.avaliacaoService.save(obj).then(sucesso, falha);
+    };
 
 })();

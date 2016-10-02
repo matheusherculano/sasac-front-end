@@ -15,5 +15,9 @@ angular.module('BlurAdmin', [
   'ui.bootstrap',
 
   'BlurAdmin.theme',
-  'BlurAdmin.pages'
-]);
+  'BlurAdmin.pages',
+  'Services'
+])
+.constant("api", {
+        "url": "http://localhost:9001"
+    });

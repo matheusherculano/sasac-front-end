@@ -12,7 +12,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
 
-  
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css({.tmp/serve,src}) styles/auth.css -->
+  <!-- inject:css -->
+  <!-- css files will be automatically insert here -->
+  <!-- endinject -->
+  <!-- endbuild -->
 </head>
 <body>
 <main class="auth-main">
@@ -20,7 +30,7 @@
     <h1>Sign in to Blur Admin</h1>
     <a href="reg.html" class="auth-link">New to Blur Admin? Sign up!</a>
 
-    <form class="form-horizontal">
+    <form form="login" class="form-horizontal">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
@@ -37,7 +47,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default btn-auth">Sign in</button>
+          <button ng-click="alert()" type="submit" class="btn btn-default btn-auth">Sign in</button>
           <a href class="forgot-pass">Forgot password?</a>
         </div>
       </div>

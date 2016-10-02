@@ -1,0 +1,10 @@
+    <a class="auth-link">Trocar Usuário</a>
+
+    <form form="login" class="form-horizontal">
+      <div class="form-group">
+        <label for="periodo">Usuário</label>
+                    <select ng-model="vm.usuario.id" class="form-control" id="periodo" name="periodo" placeholder="Periodo de Repetição">
+                        <option ng-repeat="x in vm.usuarios" value="{{x.id}}">{{x.nome}}</option>
+                    </select>
+      </div>
+    </form>

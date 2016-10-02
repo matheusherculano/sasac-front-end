@@ -7,10 +7,11 @@
 
     angular.module('BlurAdmin.pages', [
         'ui.router',
-//    'BlurAdmin.pages.dashboard',
-        'BlurAdmin.pages.teste',
+    'BlurAdmin.pages.dashboard',
+//        'BlurAdmin.pages.teste',
         'BlurAdmin.pages.avaliacao',
         'BlurAdmin.pages.gerenciamento',
+        'BlurAdmin.pages.inicio',
 //    'BlurAdmin.pages.ui',
 //    'BlurAdmin.pages.form',
 //    'BlurAdmin.pages.tables',
@@ -22,17 +23,17 @@
 
     /** @ngInject */
     function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
-        $urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/inicio');
 
     baSidebarServiceProvider.addStaticItem({
       title: 'Pages',
       icon: 'ion-document',
       subMenu: [
-//          {
-//        title: 'Sign In',
-//        fixedHref: 'auth.html',
-//        blank: true
-//      }, 
+          {
+        title: 'Sign In',
+        fixedHref: 'auth.html',
+        blank: true
+      }, 
       {
         title: 'Sign Up',
         fixedHref: 'reg.html',

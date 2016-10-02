@@ -23,8 +23,8 @@
 
 
         var $this = this;
-
-        $this.aaa = 'aaa';
+        $this.smartTablePageSize = 10;
+        $this.avaliacao = [];
 
         $this.getAll();
     }

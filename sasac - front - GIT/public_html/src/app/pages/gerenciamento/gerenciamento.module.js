@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('BlurAdmin.pages.gerenciamento', [
-        'BlurAdmin.pages.gerenciamento.controller'
+        'BlurAdmin.pages.gerenciamento.controller',
+        'BlurAdmin.pages.gerenciamento.modalController'
     ])
             .config(routeConfig);
 

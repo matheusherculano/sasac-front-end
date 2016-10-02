@@ -9,6 +9,10 @@
                     return $http.post(api.url + "/avaliacao", obj);
                 };
                 
+                $this.update = function (obj) {
+                    return $http.put(api.url + "/avaliacao/", obj);
+                };
+                
                 $this.setPublicacao = function (idAvaliacao) {
                     return $http.post(api.url + "/avaliacao/"+idAvaliacao+"/publicacao");
                 };
@@ -17,8 +21,16 @@
                     return $http.get(api.url + "/avaliacao");
                 };
                 
+                $this.getPublic = function (boo) {
+                    return $http.get(api.url + "/avaliacao/publicado?publicado="+boo);
+                };
+                
                 $this.getById = function (idAvaliacao) {
                     return $http.get(api.url + "/avaliacao/"+idAvaliacao);
+                };
+                
+                $this.getByUser = function (idUsuario) {
+                    return $http.get(api.url + "/avaliacao/usuario/"+idUsuario);
                 };
             });
 

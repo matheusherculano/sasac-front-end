@@ -16,7 +16,7 @@
         .state('inicio', {
           url: '/inicio',
           templateUrl: 'app/pages/inicio/inicio.html',
-          controller:'inicioController',
+          controller:'inicioController as vm',
           title: 'Inicio',
           sidebarMeta: {
             icon: 'ion-android-home',

@@ -1,5 +1,51 @@
 <div class="row">
-    <div class="col-lg-4 col-md-6"
-         ba-panel ba-panel-class="with-scroll">
-        ABERTAS
+    <div class="" ba-panel 
+         ba-panel-class="with-scroll" ba-panel-title="Avaliações Abertas">
+
+        <div class="table-responsive" >
+            <table class="table table-hover text-left">
+                <tr>
+                    <th> 
+                        Titulo
+                    </th>
+                    <th> 
+                        Autor
+                    </th>
+                    <th> 
+                        Ações
+                    </th>
+                    <th> 
+                        Situação
+                    </th>
+                </tr>
+
+                <tr ng-repeat="x in vm.avaliacao" style="cursor:pointer">
+                    <td ng-click="vm.open('app/pages/ui/modals/modalTemplates/avaliacaoModal.html', 'lg', x.id)">{{x.titulo}}</td>
+                    <td ng-click="vm.open('app/pages/ui/modals/modalTemplates/avaliacaoModal.html', 'lg', x.id)">{{x.usuarioCriador.nome}}</td>
+                    <td>
+                        <button type="button" class="btn btn-default btn-xs">
+                            <span aria-hidden="true">Resultados</span>
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-success btn-with-icon btn-xs"
+                                data-toggle="tooltip" data-placement="bottom" title="Clique para despublicar"
+                                ng-if="x.publicado">
+                            <i class="ion-android-checkmark-circle"></i>
+                            Publicado</button>
+                        <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-warning btn-with-icon btn-xs"
+                                data-toggle="tooltip" data-placement="bottom" title="Clique para publicar"
+                                ng-if="!x.publicado"> 
+                            <i class="ion-android-warning"></i>
+                            Não publicado</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
     </div>
+</div>
+
+
+
+

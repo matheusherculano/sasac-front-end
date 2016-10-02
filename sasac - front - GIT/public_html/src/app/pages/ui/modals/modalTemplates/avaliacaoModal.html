@@ -15,13 +15,13 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="titulo">Titulo</label>
-                            <input ng-model="$ctrl.obj.titulo" type="text" class="form-control" id="titulo" placeholder="Titulo" disabled>
+                            <input ng-model="$ctrl.obj.titulo" type="text" class="form-control" id="titulo" placeholder="Titulo" ng-disabled="true">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="descrição">Descrição</label>
-                            <textarea ng-model="$ctrl.obj.descricao" class="form-control" id="descrição" placeholder="descrição" rows="3" disabled></textarea>
+                            <textarea ng-model="$ctrl.obj.descricao" class="form-control" id="descrição" placeholder="descrição" rows="3" ng-disabled="true"></textarea>
                         </div>
                     </div>
 
@@ -29,42 +29,54 @@
                         <div class="form-group col-md-4">
                             <label for="rPositiva">Resposta Positiva</label>
                             <input ng-model="$ctrl.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" 
-                                   placeholder="Resposta Positiva" disabled>
+                                   placeholder="Resposta Positiva" ng-disabled="true">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="rPositiva">Resposta Neutra</label>
                             <input ng-model="$ctrl.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" 
-                                   placeholder="Resposta Neutra" disabled>
+                                   placeholder="Resposta Neutra" ng-disabled="true">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="rPositiva">Resposta Negativa</label>
                             <input ng-model="$ctrl.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" 
-                                   placeholder="Resposta Negativa" disabled>
+                                   placeholder="Resposta Negativa" ng-disabled="true">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-4">
+                        <!--visualizar-->
+                        <div class="form-group col-md-4" ng-if="!$ctrl.editavel">
                             <label for="periodo">Periodo de Repetição</label>
                             <input ng-model="$ctrl.obj.repeticao.repeticao" type="text" class="form-control" id="Periodo" name="repeticoes" 
-                                   placeholder="Periodo de Repetição" disabled>
+                                   placeholder="Periodo de Repetição" ng-disabled="!$ctrl.editavel">
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="repeticoes">Quantidade de repetições</label>
-                            <input type="number" class="form-control" id="repeticoes" name="repeticoes" 
-                                   placeholder="Quantidade de repetições" disabled>
+                        <!--editar-->
+                        <div class="form-group col-md-4" ng-if="$ctrl.editavel">
+                            <label for="periodo">Periodo de Repetição</label>
+                            <!--                            <select ng-model="$ctrl.obj.repeticao.id" class="form-control" id="periodo" name="periodo" placeholder="Periodo de Repetição">
+                                                            <option ng-repeat="x in $ctrl.repeticoes" value="{{x.id}}">{{x.repeticao}}</option>
+                                                        </select>-->
+                            <select class="form-control" ng-model="$ctrl.obj.repeticao" 
+                                    ng-options="item.repeticao for item in $ctrl.repeticoes track by item.id"></select>
                         </div>
+                        <div class="form-group col-md-4" >
+                            <label for="periodo">Quantidade de Repetição</label>
+                            <input type="text" class="form-control" id="Periodo" name="repeticoes" 
+                                   placeholder="Quantidade de Repetição" >
+                        </div>
+
                         <div class="form-group col-md-4">
                             <label for="dt_disponibilidade">Data limite de disponibilidade</label>
                             <input ng-model="$ctrl.obj.dt_disponibilidade" type="date" class="form-control" id="dt_disponibilidade" 
-                                   name="dt_disponibilidade" placeholder="Data limite de disponibilidade" disabled>
+                                   name="dt_disponibilidade" placeholder="Data limite de disponibilidade" ng-disabled="!$ctrl.editavel">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-10">
                             <button ng-click="$dismiss()" class="btn btn-warning">Fechar</button>
+                            <button ng-click="$ctrl.update($ctrl.obj)" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
                 </form>

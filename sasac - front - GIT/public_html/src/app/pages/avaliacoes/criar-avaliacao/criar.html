@@ -2,11 +2,14 @@
     <div class=""
          ba-panel ba-panel-class="with-scroll">
 
-        <form>
+        <form name="vm.myForm">
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="titulo">Titulo</label>
-                    <input ng-model="vm.obj.titulo" type="text" class="form-control" id="titulo" placeholder="Titulo" required>
+                    <input ng-model="vm.obj.titulo" type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" 
+                           required>
+                    {{vm.myForm.titulo}}
+                    <p></p> 
                 </div>
             </div>
             <div class="row">
@@ -19,17 +22,17 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="rPositiva">Resposta Positiva</label>
-                    <input ng-model="vm.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva">
+                    <input ng-model="vm.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva" required>
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="rPositiva">Resposta Neutra</label>
-                    <input ng-model="vm.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra">
+                    <input ng-model="vm.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra" required>
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="rPositiva">Resposta Negativa</label>
-                    <input ng-model="vm.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa">
+                    <input ng-model="vm.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa" required>
                 </div>
             </div>
 
@@ -46,7 +49,8 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="dt_disponibilidade">Data limite de disponibilidade</label>
-                    <input ng-model="vm.obj.dt_disponibilidade" type="date" class="form-control" id="dt_disponibilidade" name="dt_disponibilidade" placeholder="Data limite de disponibilidade">
+                    <input ng-model="vm.obj.dt_disponibilidade" type="date" class="form-control" id="dt_disponibilidade" 
+                           name="dt_disponibilidade" placeholder="Data limite de disponibilidade" required>
                 </div>
             </div>
             <button ng-click="vm.salvar(vm.obj)" class="btn btn-success">Enviar</button>

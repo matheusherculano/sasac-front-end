@@ -20,24 +20,32 @@
                 </tr>
 
                 <tr ng-repeat="x in vm.avaliacao" style="cursor:pointer">
-                    <td ng-click="vm.open('app/pages/ui/modals/modalTemplates/avaliacaoModal.html', 'lg', x.id)">{{x.titulo}}</td>
-                    <td ng-click="vm.open('app/pages/ui/modals/modalTemplates/avaliacaoModal.html', 'lg', x.id)">{{x.usuarioCriador.nome}}</td>
+                    <!--respondido-->
+                    <td ng-if="x.respondido">{{x.titulo}}</td>
+                    <td ng-if="x.respondido">{{x.usuarioCriador.nome}}</td>
+                    
+                    <!--não respondido-->
+                    <td ng-if="!x.respondido" ng-click="vm.open('app/pages/ui/modals/modalTemplates/respostaModal.html', 'lg', x.id, x.ultimoPeriodo)">{{x.titulo}}</td>
+                    <td ng-if="!x.respondido" ng-click="vm.open('app/pages/ui/modals/modalTemplates/respostaModal.html', 'lg', x.id, x.ultimoPeriodo)">{{x.usuarioCriador.nome}}</td>
                     <td>
                         <button type="button" class="btn btn-default btn-xs">
                             <span aria-hidden="true">Resultados</span>
                         </button>
                     </td>
                     <td>
+                        <!--icones de resposta-->
                         <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-success btn-with-icon btn-xs"
                                 data-toggle="tooltip" data-placement="bottom" title="Clique para despublicar"
-                                ng-if="x.publicado">
+                                ng-if="x.respondido">
                             <i class="ion-android-checkmark-circle"></i>
-                            Publicado</button>
+                            Respondido</button>
+                        
                         <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-warning btn-with-icon btn-xs"
                                 data-toggle="tooltip" data-placement="bottom" title="Clique para publicar"
-                                ng-if="!x.publicado"> 
-                            <i class="ion-android-warning"></i>
-                            Não publicado</button>
+                                ng-if="!x.respondido"> 
+                            <i class="ion-alert"></i>
+                            Não Respondido</button>
+                        
                     </td>
                 </tr>
             </table>

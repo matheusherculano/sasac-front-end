@@ -2,7 +2,8 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.avaliacao.abertas', [
-      'BlurAdmin.pages.avaliacao.abertas.controller'
+      'BlurAdmin.pages.avaliacao.abertas.controller',
+      'BlurAdmin.pages.avaliacao.abertas.modal'
   ])
       .config(routeConfig);
 

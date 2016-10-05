@@ -53,7 +53,7 @@
         
         console.log("usuario.id",usuario.id)
         console.log("usuario",usuario)
-        $this.avaliacaoService.getByUser(usuario).then(sucesso, falha);
+        $this.avaliacaoService.getByUser(usuario.id).then(sucesso, falha);
     };
 
 })();

@@ -75,8 +75,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-offset-10">
+                            <button ng-click="$ctrl.update($ctrl.obj)" class="btn btn-success" ng-if="$ctrl.editavel">Salvar</button>
                             <button ng-click="$dismiss()" class="btn btn-warning">Fechar</button>
-                            <button ng-click="$ctrl.update($ctrl.obj)" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
                 </form>

@@ -51,12 +51,13 @@
                     <label for="repeticoes">Quantidade de repetições</label>
                     <input type="number" class="form-control" id="repeticoes" name="repeticoes" placeholder="Quantidade de repetições">
                 </div>
+                
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.dt_disponibilidade.$invalid && vm.myForm.dt_disponibilidade.$touched}">
                     <label for="dt_disponibilidade">Data limite de disponibilidade</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.dt_disponibilidade" type="date" class="form-control" id="dt_disponibilidade" 
-                           name="dt_disponibilidade" placeholder="Data limite de disponibilidade" required>
-                    <p ng-show="vm.myForm.dt_disponibilidade.$invalid && vm.myForm.dt_disponibilidade.$touched" class="text-danger">Digite ou selecione a data limite de disponibilidade.</p> 
-                </div>
+                           name="dt_disponibilidade" placeholder="Data limite de disponibilidade" min="{{vm.minDate | date:'yyyy-MM-dd'}}" required>
+                    <p ng-show="vm.myForm.dt_disponibilidade.$invalid && vm.myForm.dt_disponibilidade.$touched" class="text-danger">Digite ou selecione a data limite de disponibilidade que não seja um dia passado.</p> 
+                </div>{{}}
             </div>
             <button ng-click="vm.salvar(vm.myForm, vm.obj)" class="btn btn-success">Enviar</button>
         </form>

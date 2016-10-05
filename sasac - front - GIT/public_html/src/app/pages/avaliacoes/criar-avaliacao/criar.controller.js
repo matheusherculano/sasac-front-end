@@ -20,6 +20,7 @@
         this.$q = $q;
 
         var $this = this;
+        $this.minDate = new Date(); 
         
         $this.usuario = $this.usuarioService.getUsuario().id;
 

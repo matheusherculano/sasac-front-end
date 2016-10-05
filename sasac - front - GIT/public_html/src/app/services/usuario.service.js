@@ -25,7 +25,6 @@
                     $this.getPeriodosRespondidos(keyUsuario).then(function sucesso(response) {
                         usuario = response.data;
 
-                        console.log("usuario", usuario);
                     }, function falha() {
                         console.log("Ocorreu uma falha ao recuperar o usuário");
                     });

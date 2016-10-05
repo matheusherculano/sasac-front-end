@@ -40,20 +40,17 @@
 
     manterController.prototype.getByUser = function () {
         var $this = this;
-        var usuario = $this.usuarioService.getUsuario();
+        var idUsuario = $this.usuarioService.getIdUsuario();
         
         var sucesso = function (response) {
             $this.avaliacao = response.data;
             $this.gridDisponivel = true;
-            console.log(response.data);
         };
         var falha = function () {
             $this.toastr.error("Falha ao carregar as pesquisas.");
         };
         
-        console.log("usuario.id",usuario.id)
-        console.log("usuario",usuario)
-        $this.avaliacaoService.getByUser(usuario.id).then(sucesso, falha);
+        $this.avaliacaoService.getByUser(idUsuario).then(sucesso, falha);
     };
 
 })();

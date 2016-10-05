@@ -26,8 +26,6 @@
         $this.avaliacao = [];
         $this.usuario = $this.usuarioService.getUsuario();
 
-        console.log("resolveUsuario", this.resolveUsuario)
-
         $this.getPublic();
     }
 
@@ -56,7 +54,6 @@
             });
 
             $this.avaliacao = avaliacao;
-            console.log("avaliacao;", avaliacao);
         };
         var falha = function () {
             $this.toastr.error("Falha ao carregar as pesquisas.");

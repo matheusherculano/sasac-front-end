@@ -24,7 +24,6 @@
         $this.usuario = $this.usuarioService.getUsuario().id;
 
         $this.repeticaoService.getRepeticao().then(function (response) {
-            console.log("repeteco ", response);
             $this.repeticoes = response.data;
         }, function () {
             console.error("Falha ao recuperar as repetições")

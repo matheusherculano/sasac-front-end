@@ -58,8 +58,8 @@
                             <!--                            <select ng-model="$ctrl.obj.repeticao.id" class="form-control" id="periodo" name="periodo" placeholder="Periodo de Repetição">
                                                             <option ng-repeat="x in $ctrl.repeticoes" value="{{x.id}}">{{x.repeticao}}</option>
                                                         </select>-->
-                            <select class="form-control" ng-model="$ctrl.obj.repeticao" 
-                                    ng-options="item.repeticao for item in $ctrl.repeticoes track by item.id"></select>
+                            <select class="form-control selectpicker" ng-model="$ctrl.obj.repeticao" 
+                                    ng-options="item.repeticao for item in $ctrl.repeticoes track by item.id" selectpicker></select>
                         </div>
                         <div class="form-group col-md-4" >
                             <label for="periodo">Quantidade de Repetição</label>

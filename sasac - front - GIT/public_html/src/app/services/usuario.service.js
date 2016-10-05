@@ -30,7 +30,6 @@
                         console.log("Ocorreu uma falha ao recuperar o usuário");
                     });
                     
-                    
                     return usuario;
                 };
 
@@ -42,6 +41,10 @@
                 $this.setUsuario = function (idUsuario) {
                     var $this = this;
                     keyUsuario = idUsuario;
+                };
+                
+                $this.getIdUsuario = function () {
+                    return keyUsuario;
                 };
 
             });

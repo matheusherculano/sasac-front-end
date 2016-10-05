@@ -1,25 +1,30 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('BlurAdmin.pages.avaliacao.abertas', [
-      'BlurAdmin.pages.avaliacao.abertas.controller',
-      'BlurAdmin.pages.avaliacao.abertas.modal'
-  ])
-      .config(routeConfig);
+    angular.module('BlurAdmin.pages.avaliacao.abertas', [
+        'BlurAdmin.pages.avaliacao.abertas.controller',
+        'BlurAdmin.pages.avaliacao.abertas.modal'
+    ])
+            .config(routeConfig);
 
-  /** @ngInject */
-  function routeConfig($stateProvider) {
-     $stateProvider
-        .state('avaliacao.abertas', {
-          url: '/avaliacoes-abertas',
-          controller:'abertasController as vm',
-          templateUrl: 'app/pages/avaliacoes/avaliacoes-abertas/abertas.html',
-          title: 'Avalia\u00e7\u00f5es Abertas',
-          sidebarMeta: {
-            icon: 'ion-android-home',
-            order: 0,
-          },
-        });
-  }
+    /** @ngInject */
+    function routeConfig($stateProvider) {
+        $stateProvider
+                .state('avaliacao.abertas', {
+                    url: '/avaliacoes-abertas/:reload',
+                    controller: 'abertasController as vm',
+                    templateUrl: 'app/pages/avaliacoes/avaliacoes-abertas/abertas.html',
+                    title: 'Avalia\u00e7\u00f5es Abertas',
+                    sidebarMeta: {
+                        icon: 'ion-android-home',
+                        order: 0
+                    }
+                })
+                .state('avaliacao.obrigado', {
+                    url: '/obrigado',
+                    controller: 'abertasController as vm',
+                    templateUrl: 'app/pages/avaliacoes/avaliacoes-abertas/resposta.html'
+                });
+    }
 
 })();

@@ -18,7 +18,7 @@
                     sidebarMeta: {
                         icon: 'ion-android-home',
                         order: 0
-                    },
+                    }
                 });
     }
 

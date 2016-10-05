@@ -2,7 +2,7 @@
 
     <form form="login" class="form-horizontal">
       <div class="form-group">
-        <label for="periodo">Usuário</label>
+        <label for="periodo">Usuário</label>{{vm.usuario}}
                     <select ng-model="vm.usuario" class="form-control" id="periodo" name="periodo" placeholder="Usuários"
                             ng-change="vm.setUsuario(vm.usuario)">
                         <option ng-repeat="x in vm.usuarios" value="{{x.id}}">{{x.nome}}</option>

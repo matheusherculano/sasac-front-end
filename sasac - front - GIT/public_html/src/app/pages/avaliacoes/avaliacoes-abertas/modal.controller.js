@@ -26,7 +26,7 @@
             avaliacaoService.responder(resposta).then(function () {
                 toastr.success("Resposta registrada.");
                 $uibModalInstance.close();
-                $state.reload();
+                $state.go('avaliacao.obrigado');
             }, function () {
                 toastr.error("Ocorreu um erro ao registrar a resposta.");
             });

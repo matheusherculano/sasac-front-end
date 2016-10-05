@@ -30,10 +30,10 @@
       $this.usuarioService.getAll().then(sucesso, falha);
     };
     
-    inicioController.prototype.setUsuario = function (usuario){
+    inicioController.prototype.setUsuario = function (idIsuario){
       var $this = this;
       
-      $this.usuarioService.setUsuario(usuario);
+      $this.usuarioService.setUsuario(idIsuario);
     };
   
 

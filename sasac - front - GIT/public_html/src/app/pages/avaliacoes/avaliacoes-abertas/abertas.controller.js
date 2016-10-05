@@ -13,7 +13,7 @@
             $scope,
             utilService,
             usuarioService) {
-
+                
         this.avaliacaoService = avaliacaoService;
         this.$state = $state;
         this.toastr = toastr;
@@ -26,14 +26,19 @@
         $this.avaliacao = [];
         $this.usuario = $this.usuarioService.getUsuario();
 
+        console.log("resolveUsuario", this.resolveUsuario)
+
         $this.getPublic();
     }
 
     abertasController.prototype.getPublic = function () {
         var $this = this;
-
+        
         var sucesso = function (response) {
             var avaliacao = response.data;
+            
+            //buscar as avaliações respondidas 
+            $this.usuario = $this.usuarioService.getUsuario();
 
             angular.forEach(avaliacao, function (item, key) {
                 var keep = true;

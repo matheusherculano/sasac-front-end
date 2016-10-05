@@ -8,7 +8,7 @@
                     <label for="titulo">Titulo</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.titulo" type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" 
                            required>
-                    <p ng-show="vm.myForm.titulo.$invalid && vm.myForm.titulo.$touched" class="text-danger">Campo obrigatório</p> 
+                    <p ng-show="vm.myForm.titulo.$invalid && vm.myForm.titulo.$touched" class="text-danger">Digite um titulo</p> 
                 </div>
             </div>
             <div class="row">
@@ -22,26 +22,30 @@
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.rPositiva.$invalid && vm.myForm.rPositiva.$touched}">
                     <label for="rPositiva">Resposta Positiva</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva" required>
+                    <p ng-show="vm.myForm.rPositiva.$invalid && vm.myForm.rPositiva.$touched" class="text-danger">Digite uma resposta positiva.</p> 
                 </div>
 
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.rNeutra.$invalid && vm.myForm.rNeutra.$touched}">
                     <label for="rPositiva">Resposta Neutra</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra" required>
+                     <p ng-show="vm.myForm.rNeutra.$invalid && vm.myForm.rNeutra.$touched" class="text-danger">Digite uma resposta neutra.</p> 
                 </div>
 
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.rNegativa.$invalid && vm.myForm.rNegativa.$touched}">
                     <label for="rPositiva">Resposta Negativa</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa" required>
+                     <p ng-show="vm.myForm.rNegativa.$invalid && vm.myForm.rNegativa.$touched" class="text-danger">Digite uma resposta negativa.</p> 
                 </div>
             </div>
 
             <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="periodo">Periodo de Repetição</label>
+                <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.periodo.$invalid && vm.myForm.periodo.$touched}">
+                    <label for="periodo">Periodo de Repetição</label><strong class="text-danger">*</strong>
                     <select ng-model="vm.obj.repeticao.id" class="form-control selectpicker" id="periodo" 
-                            name="periodo" placeholder="Periodo de Repetição" selectpicker>
+                            name="periodo" placeholder="Periodo de Repetição" required>
                         <option ng-repeat="x in vm.repeticoes" value="{{x.id}}">{{x.repeticao}}</option>
                     </select>
+                    <p ng-show="vm.myForm.periodo.$invalid && vm.myForm.periodo.$touched" class="text-danger">Selecione um periodo de repetição.</p> 
                 </div>
                 <div class="form-group col-md-4">
                     <label for="repeticoes">Quantidade de repetições</label>
@@ -51,6 +55,7 @@
                     <label for="dt_disponibilidade">Data limite de disponibilidade</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.dt_disponibilidade" type="date" class="form-control" id="dt_disponibilidade" 
                            name="dt_disponibilidade" placeholder="Data limite de disponibilidade" required>
+                    <p ng-show="vm.myForm.dt_disponibilidade.$invalid && vm.myForm.dt_disponibilidade.$touched" class="text-danger">Digite ou selecione a data limite de disponibilidade.</p> 
                 </div>
             </div>
             <button ng-click="vm.salvar(vm.myForm, vm.obj)" class="btn btn-success">Enviar</button>

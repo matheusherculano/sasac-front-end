@@ -31,6 +31,7 @@
 
         var sucesso = function (response) {
             var dados = response.data;
+            $this.titulo = dados.titulo;
 
             var positivas = [];
             var neutras = [];

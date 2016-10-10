@@ -10,7 +10,7 @@
             <div class=""
                  ba-panel ba-panel-class="with-scroll">
 
-                <form>
+                <form name="$ctrl.respostaForm" novalidate>
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="titulo">Titulo</label>
@@ -32,19 +32,19 @@
                     <div class="form-inline row">
                         <div class="col-md-4">
                             <label class="radio-inline custom-radio nowrap">
-                                <input type="radio" ng-model="$ctrl.resp" name="inlineRadioOptions" id="inlineRadio1" value="pos">
+                                <input type="radio" ng-model="$ctrl.resp" name="inlineRadioOptions" id="inlineRadio1" value="pos" required>
                                 <span>{{$ctrl.obj.respostaPositivia}}</span>
                             </label>
                         </div>
                         <div class="col-md-4">
                             <label class="radio-inline custom-radio nowrap">
-                                <input type="radio" ng-model="$ctrl.resp" name="inlineRadioOptions" id="inlineRadio2" value="neg">
+                                <input type="radio" ng-model="$ctrl.resp" name="inlineRadioOptions" id="inlineRadio2" value="neg" required>
                                 <span>{{$ctrl.obj.respostaNeutra}}</span>
                             </label>
                         </div>
                         <div class="col-md-4">
                             <label class="radio-inline custom-radio nowrap">
-                                <input type="radio" ng-model="$ctrl.resp" name="inlineRadioOptions" id="inlineRadio3" value="neu">
+                                <input type="radio" ng-model="$ctrl.resp" name="inlineRadioOptions" id="inlineRadio3" value="neu" required>
                                 <span>{{$ctrl.obj.respostaNegativa}}</span>
                             </label>
                         </div>
@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-offset-9">
                             <button ng-click="$dismiss()" class="btn btn-warning">Fechar</button>
-                            <button ng-click="$ctrl.responder($ctrl.resp)" class="btn btn-success">Responder</button>
+                            <button ng-click="$ctrl.responder($ctrl.resp, $ctrl.respostaForm)" class="btn btn-success">Responder</button>
                         </div>
                     </div>
                 </form>

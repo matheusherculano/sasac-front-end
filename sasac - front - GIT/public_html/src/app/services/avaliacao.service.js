@@ -32,6 +32,10 @@
                 $this.getByUser = function (idUsuario) {
                     return $http.get(api.url + "/avaliacao/usuario/" + idUsuario);
                 };
+                
+                $this.getDadosGrafico = function (idAvalicao) {
+                    return $http.get(api.url + "/periodo/"+idAvalicao+"/grafico/");
+                };
 
                 $this.responder = function (resposta) {
                     return $http.post(api.url + "/periodo/resposta/", resposta);

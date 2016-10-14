@@ -28,20 +28,21 @@
                     <td ng-if="!x.respondido" ng-click="vm.open('app/pages/ui/modals/modalTemplates/respostaModal.html', 'lg', x.id, x.ultimoPeriodo)">{{x.titulo}}</td>
                     <td ng-if="!x.respondido" ng-click="vm.open('app/pages/ui/modals/modalTemplates/respostaModal.html', 'lg', x.id, x.ultimoPeriodo)">{{x.usuarioCriador.nome}}</td>
                     <td>
-                        <button type="button" class="btn btn-default btn-xs">
+                        <button type="button" class="btn btn-default btn-xs"
+                                ui-sref='avaliacao.grafico({idAvaliacao: x.id})'>
                             <span aria-hidden="true">Resultados</span>
                         </button>
                     </td>
                     <td>
                         <!--icones de resposta-->
                         <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-success btn-with-icon btn-xs"
-                                data-toggle="tooltip" data-placement="bottom" title="Clique para despublicar"
+                                data-toggle="tooltip" data-placement="bottom" 
                                 ng-if="x.respondido">
                             <i class="ion-android-checkmark-circle"></i>
                             Respondido</button>
                         
                         <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-warning btn-with-icon btn-xs"
-                                data-toggle="tooltip" data-placement="bottom" title="Clique para publicar"
+                                data-toggle="tooltip" data-placement="bottom" 
                                 ng-if="!x.respondido"> 
                             <i class="ion-alert"></i>
                             Não Respondido</button>

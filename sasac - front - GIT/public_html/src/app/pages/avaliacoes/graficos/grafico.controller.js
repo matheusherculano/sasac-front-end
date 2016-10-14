@@ -17,9 +17,10 @@
 
         var $this = this;
         $this.indicadores = {
-            periodos:null,
-            indicador:null,
+            periodos: null,
+            indicador: null,
         };
+
 
         $this.getDadosGrafico();
 
@@ -79,7 +80,7 @@
                 console.log("indicador positivo");
             }
             else if (respostasNegativas > 0.5) {
-                 $this.indicadores.indicador = "Atenção";
+                $this.indicadores.indicador = "Atenção";
                 console.log("indicador negativo");
             } else {
                 $this.indicador = "Dados insuficientes";
@@ -98,22 +99,22 @@
             var proporcional = (dados.periodos[tamanho - 2].respostasPositivas / dados.periodos[tamanho - 2].respostasNegativas) //-2 pois o array começa com 0
                     == (dados.periodos[tamanho - 1].respostasPositivas / dados.periodos[tamanho - 1].respostasNegativas);
 
-                    //indicador proporcional
+            //indicador proporcional
 //            if (proporcional) {//periodos proporcionais
 //                $this.indicadores.indicador = "Variação proporcional";
 //                
-                var porcentagemPositiva = (dados.periodos[tamanho - 1].respostasPositivas / totalUltimo);
-                var porcentagemNegativa = (dados.periodos[tamanho - 1].respostasNegativas / totalUltimo);
+            var porcentagemPositiva = (dados.periodos[tamanho - 1].respostasPositivas / totalUltimo);
+            var porcentagemNegativa = (dados.periodos[tamanho - 1].respostasNegativas / totalUltimo);
 
-                //criação de indicadores
-                if (porcentagemPositiva > porcentagemNegativa) {
-                    $this.indicadores.indicador = getIndicador("positivo", porcentagemPositiva);
-                    
-                } else if (porcentagemNegativa > porcentagemPositiva) {
-                    $this.indicadores.indicador = getIndicador("positivo", porcentagemPositiva);
-                }
-                
-                if (proporcional) {//periodos proporcionais
+            //criação de indicadores
+            if (porcentagemPositiva > porcentagemNegativa) {
+                $this.indicadores.indicador = getIndicador("positivo", porcentagemPositiva);
+
+            } else if (porcentagemNegativa > porcentagemPositiva) {
+                $this.indicadores.indicador = getIndicador("positivo", porcentagemPositiva);
+            }
+
+            if (proporcional) {//periodos proporcionais
                 $this.indicadores.proporcional = "Variação proporcional ao periodo anterior";
             }
         }
@@ -143,7 +144,7 @@
             $this.labels = $this.getLegendaRepeticao(dados.repeticao.repeticao, dados.periodos.length);
             //setando indicador
             $this.indicadores.periodos = dados.periodos.length;
-            
+
             //legenda na curva
             $this.series = ['Positivas', 'Negativas', 'Neutras'];
 
@@ -171,7 +172,7 @@
             var totalUltimoPeriodo = dados.periodos[dados.periodos.length - 1].respostasNegativas +
                     dados.periodos[dados.periodos.length - 1].respostasNeutras +
                     dados.periodos[dados.periodos.length - 1].respostasPositivas;
-            
+
             /**
              *Porcentagem das respostas do ultimo periodo:
              *postivias, negativas e neutras 
@@ -181,13 +182,13 @@
             var porcNegativas = ((dados.periodos[dados.periodos.length - 1].respostasNegativas / totalUltimoPeriodo) * 100).toFixed(2);
 
             $this.pizzaLabel = ["Postivas", "Negativas", "Neutras"];
-            
+
             $this.pizzaData = [
-                porcPositivas, 
-                porcNeutras, 
+                porcPositivas,
+                porcNeutras,
                 porcNegativas
             ];
-            
+
             $this.options = {
                 segmentShowStroke: true
             };

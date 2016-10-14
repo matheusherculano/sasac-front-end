@@ -16,12 +16,17 @@
         this.$q = $q;
 
         var $this = this;
+        $this.indicadores = {
+            periodos:null,
+            indicador:null,
+        };
 
         $this.getDadosGrafico();
 
 
     }
     graficoController.prototype.calcularPesquisa = function (dados) {
+        var $this = this;
         var defer = this.$q.defer();
         var tamanho = dados.periodos.length;
 
@@ -34,9 +39,30 @@
                 return false;
             }
         }
-        
-        function getIndicador(){
-            
+
+        function getIndicador(tipo, porcentagem) {
+            if (tipo == "positivo") {
+                if (porcentagem < 0.5) {
+                    return "Atenção";
+                } else if (porcentagem >= 0.5 && porcentagem <= 0.64) {
+                    return "Razoavel";
+                } else if (porcentagem >= 0.65 && porcentagem <= 0.84) {
+                    return "Bom";
+                } else if (porcentagem >= 0.85 && porcentagem <= 1) {
+                    return "Excelente";
+                }
+
+            } else if (tipo == "negativo") {
+                if (porcentagem >= 0 && porcentagem <= 0.15) {
+                    return "Excelente";
+                } else if (porcentagem >= 0.16 && porcentagem <= 0.35) {
+                    return "Bom";
+                } else if (porcentagem >= 0.36 && porcentagem <= 0.5) {
+                    return "Razoavel";
+                } else if (porcentagem > 0.5) {
+                    return "Atenção";
+                }
+            }
         }
 
         //Se tiver um periodo
@@ -49,18 +75,25 @@
             var respostasNegativas = (dados.periodos[0].respostasNegativas / total);
 
             if (respostasPositivas > 0.5) {
+                $this.indicadores.indicador = "Razoavel";
                 console.log("indicador positivo");
             }
             else if (respostasNegativas > 0.5) {
+                 $this.indicadores.indicador = "Atenção";
                 console.log("indicador negativo");
             } else {
+                $this.indicador = "Dados insuficientes";
                 console.log("sem indicador");
             }
 
-            console.log("total", total);
         }
         else if (tamanho > 1) {// mais de um periodo
-            //
+
+            //total de respostas ultimo periodo
+            var totalUltimo = dados.periodos[tamanho - 1].respostasPositivas
+                    + dados.periodos[tamanho - 1].respostasNeutras +
+                    dados.periodos[tamanho - 1].respostasNegativas;
+
             //verificar se a variação é proporcional nos 2 ultimos periodos 
             var proporcional = (dados.periodos[tamanho - 2].respostasPositivas / dados.periodos[tamanho - 2].respostasNegativas) //-2 pois o array começa com 0
                     == (dados.periodos[tamanho - 1].respostasPositivas / dados.periodos[tamanho - 1].respostasNegativas);
@@ -68,12 +101,17 @@
             if (proporcional) {//periodos proporcionais
                 console.log("Nada mudou");
             } else {//não proporcionais
-                
-                if (escalaCrescente(dados.periodos[tamanho - 1].respostasPositivas,
-                        dados.periodos[tamanho - 2].respostasPositivas)) {
-                    
-                    console.log("crescente positivas");
+                var porcentagemPositiva = (dados.periodos[tamanho - 1].respostasPositivas / totalUltimo);
+                var porcentagemNegativa = (dados.periodos[tamanho - 1].respostasNegativas / totalUltimo);
+
+                if (porcentagemPositiva > porcentagemNegativa) {
+                    console.log("porcentagemPositiva", porcentagemPositiva);
+                    console.log("crescente positivas", getIndicador("positivo", porcentagemPositiva));
+                } else if (porcentagemNegativa > porcentagemPositiva) {
+                    console.log("porcentagemNegativa", porcentagemNegativa);
+                    console.log("crescente negativa", getIndicador("negativo", porcentagemNegativa));
                 }
+
             }
         }
 
@@ -100,6 +138,9 @@
 
             //legenda do grafico
             $this.labels = $this.getLegendaRepeticao(dados.repeticao.repeticao, dados.periodos.length);
+            //setando indicador
+            $this.indicadores.periodos = dados.periodos.length;
+            
             //legenda na curva
             $this.series = ['Positivas', 'Negativas', 'Neutras'];
 
@@ -122,6 +163,32 @@
                 negativas,
                 neutras
             ];
+
+            //total de respostas do ultimo periodo
+            var totalUltimoPeriodo = dados.periodos[dados.periodos.length - 1].respostasNegativas +
+                    dados.periodos[dados.periodos.length - 1].respostasNeutras +
+                    dados.periodos[dados.periodos.length - 1].respostasPositivas;
+            
+            /**
+             *Porcentagem das respostas do ultimo periodo:
+             *postivias, negativas e neutras 
+             */
+            var porcPositivas = ((dados.periodos[dados.periodos.length - 1].respostasPositivas / totalUltimoPeriodo) * 100).toFixed(2);
+            var porcNeutras = ((dados.periodos[dados.periodos.length - 1].respostasNeutras / totalUltimoPeriodo) * 100).toFixed(2);
+            var porcNegativas = ((dados.periodos[dados.periodos.length - 1].respostasNegativas / totalUltimoPeriodo) * 100).toFixed(2);
+
+            $this.pizzaLabel = ["Postivas", "Negativas", "Neutras"];
+            
+            $this.pizzaData = [
+                porcPositivas, 
+                porcNeutras, 
+                porcNegativas
+            ];
+            
+            $this.options = {
+                segmentShowStroke: true
+            };
+
         };
 
         var falha = function () {

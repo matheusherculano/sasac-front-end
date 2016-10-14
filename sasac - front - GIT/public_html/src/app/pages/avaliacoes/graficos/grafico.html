@@ -1,8 +1,26 @@
 <div class="row">
+    <div class="col-md-12">
+        <div ba-panel ba-panel-title="Indicadores" ba-panel-class="with-scroll ">
+            <h4>
+                <span>Indicador da situação avaliada: {{vm.indicadores.indicador}}</span>
+                <span>n° de periodos avaliados {{vm.indicadores.periodos}}</span>
+            </h4>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-6">
-        <div ba-panel ba-panel-title="{{vm.titulo}}" ba-panel-class="with-scroll ">
+        <div ba-panel ba-panel-title="{{vm.titulo}}" ba-panel-class="with-scroll col-eq-height">
             <canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels"
                     chart-legend="false" chart-series="vm.series" chart-click="vm.changeData"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="Análise do último periodo" ba-panel-class="with-scroll col-eq-height">
+
+            <canvas id="pie" class="chart chart-pie"
+                    chart-legend="true" chart-options="vm.options" chart-data="vm.pizzaData" chart-labels="vm.pizzaLabel" chart-click="changeData">
+            </canvas>
         </div>
     </div>
 </div>

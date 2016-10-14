@@ -1,10 +1,27 @@
 <div class="row">
     <div class="col-md-12">
-        <div ba-panel ba-panel-title="Indicadores" ba-panel-class="with-scroll ">
-            <h4>
-                <span>Indicador da situação avaliada: {{vm.indicadores.indicador}}</span>
-                <span>n° de periodos avaliados {{vm.indicadores.periodos}}</span>
-            </h4>
+        <div class="h4" ba-panel ba-panel-title="Indicadores" ba-panel-class="with-scroll ">
+            <div class="col-md-6 ">
+                <span><i class="ion-play"></i> Indicador da situação avaliada: 
+                    <button type="button" class="btn btn-mm " 
+                            ng-class="{'btn-danger': vm.indicadores.indicador == 'Atenção', 
+                                    'btn-success': vm.indicadores.indicador == 'Bom' || vm.indicadores.indicador == 'Excelente',
+                                'btn-warning':vm.indicadores.indicador == 'Razoavel'}"> 
+
+                        <span class="white-text">{{vm.indicadores.indicador}}</span>
+                    </button>
+                </span>
+                <button type="button" class="btn btn-mm" ng-if="vm.indicadores.proporcional"> 
+                    <span class="white-text">{{vm.indicadores.proporcional}}</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <span><i class="ion-play"></i> n° de periodos avaliados 
+                    <button type="button" class="btn btn-default btn-mm "> 
+                        {{vm.indicadores.periodos}} 
+                    </button>
+                </span>
+            </div>
         </div>
     </div>
 </div>

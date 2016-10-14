@@ -98,20 +98,23 @@
             var proporcional = (dados.periodos[tamanho - 2].respostasPositivas / dados.periodos[tamanho - 2].respostasNegativas) //-2 pois o array começa com 0
                     == (dados.periodos[tamanho - 1].respostasPositivas / dados.periodos[tamanho - 1].respostasNegativas);
 
-            if (proporcional) {//periodos proporcionais
-                console.log("Nada mudou");
-            } else {//não proporcionais
+                    //indicador proporcional
+//            if (proporcional) {//periodos proporcionais
+//                $this.indicadores.indicador = "Variação proporcional";
+//                
                 var porcentagemPositiva = (dados.periodos[tamanho - 1].respostasPositivas / totalUltimo);
                 var porcentagemNegativa = (dados.periodos[tamanho - 1].respostasNegativas / totalUltimo);
 
+                //criação de indicadores
                 if (porcentagemPositiva > porcentagemNegativa) {
-                    console.log("porcentagemPositiva", porcentagemPositiva);
-                    console.log("crescente positivas", getIndicador("positivo", porcentagemPositiva));
+                    $this.indicadores.indicador = getIndicador("positivo", porcentagemPositiva);
+                    
                 } else if (porcentagemNegativa > porcentagemPositiva) {
-                    console.log("porcentagemNegativa", porcentagemNegativa);
-                    console.log("crescente negativa", getIndicador("negativo", porcentagemNegativa));
+                    $this.indicadores.indicador = getIndicador("positivo", porcentagemPositiva);
                 }
-
+                
+                if (proporcional) {//periodos proporcionais
+                $this.indicadores.proporcional = "Variação proporcional ao periodo anterior";
             }
         }
 

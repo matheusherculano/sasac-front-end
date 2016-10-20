@@ -1,5 +1,22 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="{{vm.titulo}}" ba-panel-class="with-scroll col-eq-height">
+            <canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels"
+                    chart-legend="true" chart-series="vm.series" chart-click="vm.changeData"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="Bars" ba-panel-class="with-scroll ">
+            <canvas id="bar" class="chart chart-bar"
+                    chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-legend="true" chart-click="vm.changeData">
+            </canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!--indicadores-->
+    <div class="col-md-6">
         <div class="h4" ba-panel ba-panel-title="Indicadores" ba-panel-class="with-scroll ">
             <div class="col-md-6 ">
                 <span><i class="ion-play"></i> Indicador da situação avaliada: 
@@ -24,18 +41,12 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
+    
+    <!--pizza-->
     <div class="col-md-6">
-        <div ba-panel ba-panel-title="{{vm.titulo}}" ba-panel-class="with-scroll col-eq-height">
-            <canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels"
-                    chart-legend="false" chart-series="vm.series" chart-click="vm.changeData"></canvas>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div ba-panel ba-panel-title="Análise do último periodo" ba-panel-class="with-scroll col-eq-height">
+        <div ba-panel ba-panel-title="{{labelPizza}}" ba-panel-class="with-scroll col-eq-height">
             <canvas id="pie" class="chart chart-pie"
-                    chart-legend="true" chart-options="vm.options" chart-data="vm.pizzaData" chart-labels="vm.pizzaLabel" chart-click="changeData">
+                    chart-legend="true" chart-options="vm.options" chart-data="pizzaData" chart-labels="vm.pizzaLabel" chart-click="changeData">
             </canvas>
         </div>
     </div>

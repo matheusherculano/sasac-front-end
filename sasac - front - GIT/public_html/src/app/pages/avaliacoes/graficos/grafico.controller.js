@@ -9,11 +9,13 @@
             avaliacaoService,
             toastr,
             $state,
-            $q) {
+            $q,
+            $scope) {
         this.avaliacaoService = avaliacaoService;
         this.toastr = toastr;
         this.$state = $state;
         this.$q = $q;
+        this.$scope = $scope;
 
         var $this = this;
         $this.indicadores = {
@@ -23,6 +25,30 @@
 
 
         $this.getDadosGrafico();
+
+        $this.changeData = function (points, evt) {
+            var $this = this;
+
+            console.log("points", points);
+
+            var total = points[0].value + points[1].value + points[2].value;
+
+            var porcPositivas = ((points[0].value / total) * 100).toFixed(2);
+            var porcNeutras = ((points[1].value / total) * 100).toFixed(2);
+            var porcNegativas = ((points[2].value / total) * 100).toFixed(2);
+
+            $scope.pizzaData = [
+                porcPositivas,
+                porcNeutras,
+                porcNegativas
+            ];
+            
+            $scope.labelPizza = points[0].label;
+
+            
+            console.log(" $this.pizzaData", $this.pizzaData);
+
+        };
 
 
     }
@@ -75,20 +101,17 @@
             var respostasPositivas = (dados.periodos[0].respostasPositivas / total);
             var respostasNegativas = (dados.periodos[0].respostasNegativas / total);
 
-            if(respostasPositivas == respostasNegativas){
+            if (respostasPositivas == respostasNegativas) {
                 $this.indicadores.indicador = "Razoavel";
-            }
-            else if (respostasPositivas > 0.5) {
+            } else if (respostasPositivas > 0.5) {
                 $this.indicadores.indicador = "Razoavel";
-            }
-            else if (respostasNegativas > 0.5) {
+            } else if (respostasNegativas > 0.5) {
                 $this.indicadores.indicador = "Atenção";
             } else {
                 $this.indicador = "Dados insuficientes";
             }
 
-        }
-        else if (tamanho > 1) {// mais de um periodo
+        } else if (tamanho > 1) {// mais de um periodo
 
             //total de respostas ultimo periodo
             var totalUltimo = dados.periodos[tamanho - 1].respostasPositivas
@@ -183,12 +206,14 @@
 
             $this.pizzaLabel = ["Postivas", "Negativas", "Neutras"];
 
-            $this.pizzaData = [
+            $this.$scope.pizzaData = [
                 porcPositivas,
                 porcNeutras,
                 porcNegativas
             ];
 
+            $this.$scope.labelPizza = $this.labels[$this.labels.length -1];
+            
             $this.options = {
                 segmentShowStroke: true
             };
@@ -232,6 +257,7 @@
 
         return legenda;
     };
+
 
 
 })();

@@ -75,16 +75,16 @@
             var respostasPositivas = (dados.periodos[0].respostasPositivas / total);
             var respostasNegativas = (dados.periodos[0].respostasNegativas / total);
 
-            if (respostasPositivas > 0.5) {
+            if(respostasPositivas == respostasNegativas){
                 $this.indicadores.indicador = "Razoavel";
-                console.log("indicador positivo");
+            }
+            else if (respostasPositivas > 0.5) {
+                $this.indicadores.indicador = "Razoavel";
             }
             else if (respostasNegativas > 0.5) {
                 $this.indicadores.indicador = "Atenção";
-                console.log("indicador negativo");
             } else {
                 $this.indicador = "Dados insuficientes";
-                console.log("sem indicador");
             }
 
         }

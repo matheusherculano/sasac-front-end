@@ -12,5 +12,5 @@
 
 License
 -------------
-<a href=/LICENSE.txt target="_blank">MIT</a> license.
+<a href="https://github.com/matheusherculano/sasac-front-end/blob/master/sasac%20-%20front%20-%20GIT/public_html/LICENSE.txt" target="_blank">MIT</a> license.
 

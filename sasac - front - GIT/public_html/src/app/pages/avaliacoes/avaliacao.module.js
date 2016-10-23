@@ -19,7 +19,7 @@
                     title: 'Avalia\u00e7\u00e3o',
                     sidebarMeta: {
                         icon: 'ion-android-home',
-                        order: 0
+                        order: 1
                     },
                 });
     }

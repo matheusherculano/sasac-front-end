@@ -17,7 +17,7 @@
                     title: 'Gerenciamento',
                     sidebarMeta: {
                         icon: 'ion-android-home',
-                        order: 0
+                        order: 2
                     }
                 });
     }

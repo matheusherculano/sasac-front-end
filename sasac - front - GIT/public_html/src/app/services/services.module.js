@@ -5,7 +5,8 @@
         'Services.repeticao',
         'Services.util',
         'Services.usuario',
-        'Services.avaliacao']);
+        'Services.avaliacao',
+        'Services.grafico']);
 
 
 })();

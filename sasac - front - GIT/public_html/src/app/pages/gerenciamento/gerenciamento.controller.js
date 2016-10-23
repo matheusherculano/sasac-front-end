@@ -11,7 +11,8 @@
             $uibModal,
             $scope,
             utilService,
-            repeticaoService) {
+            repeticaoService,
+            graficoService) {
         this.avaliacaoService = avaliacaoService;
         this.$state = $state;
         this.toastr = toastr;
@@ -19,6 +20,7 @@
         this.$scope = $scope;
         this.utilService = utilService;
         this.repeticaoService = repeticaoService;
+        this.graficoService = graficoService;
 
 
         var $this = this;
@@ -47,7 +49,15 @@
         var sucesso = function (response) {
             $this.avaliacao = response.data;
             $this.gridDisponivel = true;
-            console.log(response.data);
+            
+            angular.forEach($this.avaliacao, function(item){
+                console.log("log", $this.graficoService.calcularPesquisa(item));
+                
+                item['indicadores'] = $this.graficoService.calcularPesquisa(item);
+            });
+            
+            
+            console.log($this.avaliacao);
         };
         var falha = function () {
             $this.toastr.error("Falha ao carregar as pesquisas.");

@@ -75,7 +75,7 @@
                         } else if (respostasNegativas > 0.5) {
                             $this.indicadores.indicador = "Atenção";
                         } else {
-                            $this.indicador = "Dados insuficientes";
+                            $this.indicadores.indicador = "Dados insuficientes";
                         }
 
                     } else if (tamanho > 1) {// mais de um periodo

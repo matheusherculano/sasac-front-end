@@ -36,6 +36,7 @@
                         </button>
                         <button type="button" class="btn btn-default btn-xs"
                                 ui-sref='avaliacao.grafico({idAvaliacao: x.id})'>
+                            <i class="ion-stats-bars"></i>
                             <span aria-hidden="true">Resultados</span>
                         </button>
 
@@ -45,12 +46,40 @@
                                 data-toggle="tooltip" data-placement="bottom" title="Clique para despublicar"
                                 ng-if="x.publicado">
                             <i class="ion-android-checkmark-circle"></i>
-                            Publicado</button>
+                            Publicado
+                        </button>
                         <button ng-click="vm.setPublicacao(x.id, x.publicado)" type="button" class="btn btn-warning btn-with-icon btn-xs"
                                 data-toggle="tooltip" data-placement="bottom" title="Clique para publicar"
                                 ng-if="!x.publicado"> 
                             <i class="ion-android-warning"></i>
-                            Não publicado</button>
+                            Não publicado
+                        </button>
+                        
+                        <!--indicadores-->
+                        <button type="button" class="btn btn-success btn-with-icon btn-xs"
+                                data-toggle="tooltip" data-placement="bottom" 
+                                ng-if="x.publicado && (x.indicadores.indicador == 'Bom' || x.indicadores.indicador == 'Excelente')"> 
+                            <i class="ion-checkmark-circled"></i>
+                            {{x.indicadores.indicador}}
+                        </button>
+                        <button type="button" class="btn btn-warning btn-with-icon btn-xs"
+                                data-toggle="tooltip" data-placement="bottom"
+                                ng-if="x.publicado && (x.indicadores.indicador == 'Razoavel')"> 
+                            <i class="ion-android-warning"></i>
+                            {{x.indicadores.indicador}}
+                        </button>
+                        <button type="button" class="btn btn-danger btn-with-icon btn-xs"
+                                data-toggle="tooltip" data-placement="bottom"
+                                ng-if="x.publicado && (x.indicadores.indicador == 'Atenção')"> 
+                            <i class="ion-android-warning"></i>
+                            {{x.indicadores.indicador}}
+                        </button>
+                        <button type="button" class="btn btn-with-icon btn-xs"
+                                data-toggle="tooltip" data-placement="bottom"
+                                ng-if="x.publicado && (x.indicadores.indicador == 'Dados insuficientes')"> 
+                            <i class="ion-android-warning"></i>
+                            Dados insuficientes para gerar indicador
+                        </button>
                     </td>
                 </tr>
             </table>

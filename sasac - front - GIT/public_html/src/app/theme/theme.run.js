@@ -10,7 +10,6 @@
 
   /** @ngInject */
   function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings, $location) {
-      console.log("$steteloko", $location.search());
       
     var whatToWait = [
       preloader.loadAmCharts(),

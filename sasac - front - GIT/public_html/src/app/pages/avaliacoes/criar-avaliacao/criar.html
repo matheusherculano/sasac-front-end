@@ -7,33 +7,36 @@
                 <div class="form-group col-md-12" ng-class="{'has-error': vm.myForm.titulo.$invalid && vm.myForm.titulo.$touched}">
                     <label for="titulo">Titulo</label><strong class="text-danger">*</strong>
                     <input ng-model="vm.obj.titulo" type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" 
-                           required>
+                           maxlength="40" required>
                     <p ng-show="vm.myForm.titulo.$invalid && vm.myForm.titulo.$touched" class="text-danger">Digite um titulo</p> 
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="descrição">Descrição</label>
-                    <textarea ng-model="vm.obj.descricao" class="form-control" id="descrição" placeholder="descrição" rows="3"></textarea>
+                    <textarea ng-model="vm.obj.descricao" class="form-control" id="descrição" placeholder="descrição" rows="3" maxlength="300"></textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.rPositiva.$invalid && vm.myForm.rPositiva.$touched}">
                     <label for="rPositiva">Resposta Positiva</label><strong class="text-danger">*</strong>
-                    <input ng-model="vm.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva" required>
+                    <input ng-model="vm.obj.respostaPostivia" type="text" class="form-control" id="rPositiva" name="rPositiva" placeholder="Resposta Positiva" 
+                           maxlength="40" required>
                     <p ng-show="vm.myForm.rPositiva.$invalid && vm.myForm.rPositiva.$touched" class="text-danger">Digite uma resposta positiva.</p> 
                 </div>
 
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.rNeutra.$invalid && vm.myForm.rNeutra.$touched}">
                     <label for="rPositiva">Resposta Neutra</label><strong class="text-danger">*</strong>
-                    <input ng-model="vm.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra" required>
+                    <input ng-model="vm.obj.respostaNeutra" type="text" class="form-control" id="rNeutra" name="rNeutra" placeholder="Resposta Neutra" 
+                           maxlength="40" required>
                      <p ng-show="vm.myForm.rNeutra.$invalid && vm.myForm.rNeutra.$touched" class="text-danger">Digite uma resposta neutra.</p> 
                 </div>
 
                 <div class="form-group col-md-4" ng-class="{'has-error': vm.myForm.rNegativa.$invalid && vm.myForm.rNegativa.$touched}">
                     <label for="rPositiva">Resposta Negativa</label><strong class="text-danger">*</strong>
-                    <input ng-model="vm.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa" required>
+                    <input ng-model="vm.obj.respostaNegativa" type="text" class="form-control" id="rNegativa" name="rNegativa" placeholder="Resposta Negativa" 
+                           maxlength="40" required>
                      <p ng-show="vm.myForm.rNegativa.$invalid && vm.myForm.rNegativa.$touched" class="text-danger">Digite uma resposta negativa.</p> 
                 </div>
             </div>

@@ -87,4 +87,20 @@
             }
         });
     };
+    
+    gerenciamentoController.prototype.deletar = function(page, idAvaliacao, size){
+        var $this = this;
+        
+        $this.$uibModal.open({
+            animation: true,
+            templateUrl: page,
+            size: size,
+            controller: 'ModalDeleteCtrl',
+            controllerAs: '$ctrl',
+            resolve: {
+                idAvaliacao: idAvaliacao
+            }
+        });
+        
+    };
 })();

@@ -40,6 +40,10 @@
                 $this.responder = function (resposta) {
                     return $http.post(api.url + "/periodo/resposta/", resposta);
                 };
+                
+                $this.deletar = function(idAvaliacao){
+                    return $http.delete(api.url + "/avaliacao", idAvaliacao);
+                };
             });
 
 

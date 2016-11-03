@@ -1,7 +1,8 @@
 (function () {
     'use strict';
     angular.module('BlurAdmin.pages.gerenciamento.modalController', [])
-            .controller('ModalInstanceCtrl', ModalInstanceCtrl);
+            .controller('ModalInstanceCtrl', ModalInstanceCtrl)
+            .controller('ModalDeleteCtrl', ModalDeleteCtrl);
 
 
     /** @ngInject */
@@ -43,4 +44,31 @@
 
 
     }
+
+    /** @ngInject */
+    function ModalDeleteCtrl(
+            idAvaliacao,
+            avaliacaoService,
+            toastr,
+            $state) {
+
+        var $ctrl = this;
+
+        $ctrl.deletar = function () {
+            console.log("id", idAvaliacao);
+            
+            var sucesso = function(){
+                toastr.success("Avaliação excluída com sucesso!");
+                $state.reload();
+            };
+            
+            var falha = function(response){
+                toastr.error(response.message);
+            };
+            
+            avaliacaoService.deletar(idAvaliacao).then(sucesso, falha);
+        };
+
+    }
+
 })();

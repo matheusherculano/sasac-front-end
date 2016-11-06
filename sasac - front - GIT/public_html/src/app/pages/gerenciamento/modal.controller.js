@@ -50,7 +50,8 @@
             idAvaliacao,
             avaliacaoService,
             toastr,
-            $state) {
+            $state,
+            $uibModalInstance) {
 
         var $ctrl = this;
 
@@ -59,6 +60,7 @@
             
             var sucesso = function(){
                 toastr.success("Avaliação excluída com sucesso!");
+                $uibModalInstance.close();
                 $state.reload();
             };
             

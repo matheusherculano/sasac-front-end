@@ -42,7 +42,7 @@
                 };
                 
                 $this.deletar = function(idAvaliacao){
-                    return $http.delete(api.url + "/avaliacao", idAvaliacao);
+                    return $http.post(api.url + "/avaliacao/" + idAvaliacao);
                 };
             });
 

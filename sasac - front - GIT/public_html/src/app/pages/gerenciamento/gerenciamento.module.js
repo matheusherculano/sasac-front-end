@@ -16,7 +16,7 @@
                     templateUrl: 'app/pages/gerenciamento/gerenciamento.html',
                     title: 'Gerenciamento',
                     sidebarMeta: {
-                        icon: 'ion-android-home',
+                        icon: 'ion-ios-gear',
                         order: 2
                     }
                 });

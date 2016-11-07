@@ -18,7 +18,7 @@
                     url: '/avaliacao',
                     title: 'Avalia\u00e7\u00e3o',
                     sidebarMeta: {
-                        icon: 'ion-android-home',
+                        icon: 'ion-ios-compose',
                         order: 1
                     },
                 });
